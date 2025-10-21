@@ -105,7 +105,10 @@ def set_bg(image_file):
     st.markdown(css, unsafe_allow_html=True)
 
 # 🖼️ Use your image path
-set_bg(r"G:\My Drive\sentiment_web\background.jpg.png")
+import os
+
+bg_path = os.path.join(os.path.dirname(__file__), "background.jpg.png")
+set_bg(bg_path)
 
 # -------------------------
 # 7️⃣ CSS Styling for Visibility
@@ -197,5 +200,6 @@ if st.button("🔍 Predict Sentiment"):
         st.markdown(f"<div class='result-box'><h2 style='color:{color};'>{sentiment}</h2></div>", unsafe_allow_html=True)
         st.info(f"Confidence: {prediction_proba*100:.2f}%")
         st.progress(int(prediction_proba*100))
+
 
 
