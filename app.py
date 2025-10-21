@@ -69,7 +69,10 @@ class TextPreprocessor(BaseEstimator, TransformerMixin):
 # -------------------------
 # 4️⃣ Load Model
 # -------------------------
-model_path = r"G:\My Drive\sentiment_web\sentiment_pipeline.joblib"
+import os
+
+model_path = os.path.join(os.path.dirname(__file__), "sentiment_pipeline.joblib")
+
 model = joblib.load(model_path)
 
 # -------------------------
@@ -194,4 +197,5 @@ if st.button("🔍 Predict Sentiment"):
         st.markdown(f"<div class='result-box'><h2 style='color:{color};'>{sentiment}</h2></div>", unsafe_allow_html=True)
         st.info(f"Confidence: {prediction_proba*100:.2f}%")
         st.progress(int(prediction_proba*100))
+
 
